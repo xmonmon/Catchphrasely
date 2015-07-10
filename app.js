@@ -38,7 +38,7 @@ var users = [
 	},
 ];
 app.get('/', function(req,res){
-	res.send('Monika sucks at life');
+	res.send('HI WORLD!');
 })
 // this is Reading it
 // for the res.json you  just have to call the variable bc it's all attatched to it
@@ -62,7 +62,7 @@ app.put('/users/:id', function(req, res) {
   // set the value of the id
   var usersId = parseInt(req.params.id);
   // find item in `phrases` array matching the id
-  var targetUsers = _.findWhere(users, {id:userId});
+  var targetUsers = _.findWhere(users, {id:usersId});
   // update the phrase's word
   targetUsers.id = req.body.id;
   targetUsers.username = req.body.username;
@@ -70,6 +70,7 @@ app.put('/users/:id', function(req, res) {
   targetUsers.lastname = req.body.lastname;
   targetUsers.age = req.body.age;
   // send back edited object
+  console.log(targetUsers);
   res.json(targetUsers);
 });
 
@@ -80,7 +81,7 @@ app.delete('/users/:id', function(req, res) {
   // set the value of the id
   var usersId = parseInt(req.params.id);
   // find item in `phrases` array matching the id
-  var targetUsers = _.findWhere(users, {id:phraseId});
+  var targetUsers = _.findWhere(users, {id:usersId});
   // get the index of the found item
   var index = users.indexOf(targetUsers);
   // remove the item at that index, only remove 1 item
